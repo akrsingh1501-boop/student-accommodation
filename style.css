@@ -82,3 +82,17 @@ footer {
     margin: 0 8px;
   }
 }
+.contact {
+  padding: 60px 8%;
+  text-align: center;
+  background: white;
+}
+
+.contact h2 {
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+.contact p {
+  margin-top: 8px;
+}
