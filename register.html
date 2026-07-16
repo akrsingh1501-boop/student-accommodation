@@ -28,13 +28,14 @@
     const form = document.getElementById("registerForm");
 
     form.addEventListener("submit", function (event) {
-      event.preventDefault();
+    
 
       const password = document.getElementById("password").value;
       const confirmPassword = document.getElementById("confirmPassword").value;
       const message = document.getElementById("message");
 
       if (password !== confirmPassword) {
+       event.preventdefault(); 
         message.style.color = "red";
         message.textContent = "Passwords do not match.";
       } else {
