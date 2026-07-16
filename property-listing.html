@@ -3,61 +3,157 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Property Listings</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Property Listing</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #ffffff;
+      color: #111827;
+    }
+
+    .property-list {
+      width: min(1180px, 92%);
+      margin: 18px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .property-card {
+      display: flex;
+      min-height: 260px;
+      overflow: hidden;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
+    }
+
+    .property-card img {
+      width: 39%;
+      object-fit: cover;
+    }
+
+    .property-info {
+      padding: 25px 28px;
+    }
+
+    .location {
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #4b5563;
+      text-transform: uppercase;
+    }
+
+    .property-info h2 {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    .features {
+      font-size: 1.25rem;
+      color: #1f2937;
+    }
+
+    .price {
+      margin: 26px 0;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2563eb;
+    }
+
+    .verified {
+      color: #374151;
+      font-size: 1.15rem;
+    }
+
+    .verified span {
+      display: inline-block;
+      margin-right: 8px;
+      color: #16a34a;
+      font-size: 1.45rem;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 650px) {
+      .property-card {
+        flex-direction: column;
+      }
+
+      .property-card img {
+        width: 100%;
+        height: 220px;
+      }
+
+      .property-info {
+        padding: 20px;
+      }
+
+      .property-info h2 {
+        font-size: 1.5rem;
+      }
+
+      .features,
+      .verified {
+        font-size: 1rem;
+      }
+
+      .price {
+        margin: 18px 0;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <nav>
-    <strong>MyProperty</strong>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-    </div>
-  </nav>
+  <main class="property-list">
 
-  <main class="listing-page">
-    <h1>Available Properties</h1>
+    <article class="property-card">
+      <img src="images/maple-house.jpg" alt="Maple House room">
 
-    <div class="property-grid">
-
-      <div class="property-card">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Modern house">
-        <div class="card-content">
-          <h2>Modern Family House</h2>
-          <p>📍 Mumbai, Maharashtra</p>
-          <p class="price">₹75,00,000</p>
-          <a class="btn" href="property-detail.html">View Details</a>
-        </div>
+      <div class="property-info">
+        <p class="location">North Campus, Delhi</p>
+        <h2>Maple House</h2>
+        <p class="features">Private rooms · Wi-Fi · Meals</p>
+        <p class="price">₹14,500 / month</p>
+        <p class="verified"><span>●</span>Verified</p>
       </div>
+    </article>
 
-      <div class="property-card">
-        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80" alt="Luxury apartment">
-        <div class="card-content">
-          <h2>Luxury Apartment</h2>
-          <p>📍 Delhi, India</p>
-          <p class="price">₹55,00,000</p>
-          <a class="btn" href="property-detail.html">View Details</a>
-        </div>
+    <article class="property-card">
+      <img src="images/study-loft.jpg" alt="The Study Loft room">
+
+      <div class="property-info">
+        <p class="location">Koramangala, Bengaluru</p>
+        <h2>The Study Loft</h2>
+        <p class="features">Shared rooms · Wi-Fi · Gym</p>
+        <p class="price">₹12,000 / month</p>
+        <p class="verified"><span>●</span>Verified</p>
       </div>
+    </article>
 
-      <div class="property-card">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80" alt="Villa">
-        <div class="card-content">
-          <h2>Beautiful Villa</h2>
-          <p>📍 Goa, India</p>
-          <p class="price">₹1,20,00,000</p>
-          <a class="btn" href="property-detail.html">View Details</a>
-        </div>
+    <article class="property-card">
+      <img src="images/olive-residency.jpg" alt="Olive Residency room">
+
+      <div class="property-info">
+        <p class="location">Viman Nagar, Pune</p>
+        <h2>Olive Residency</h2>
+        <p class="features">Private rooms · AC · Laundry</p>
+        <p class="price">₹16,000 / month</p>
+        <p class="verified"><span>●</span>Verified</p>
       </div>
+    </article>
 
-    </div>
   </main>
-
-  <footer>
-    <p>© 2026 MyProperty. All rights reserved.</p>
-  </footer>
 
 </body>
 </html>
