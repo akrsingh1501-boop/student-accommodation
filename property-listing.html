@@ -1,159 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Property Listing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+    <title>Find a Stay - StayNest</title>
 
-    body {
-      background: #ffffff;
-      color: #111827;
-    }
+    <style>
 
-    .property-list {
-      width: min(1180px, 92%);
-      margin: 18px auto;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-    .property-card {
-      display: flex;
-      min-height: 260px;
-      overflow: hidden;
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.12);
-    }
+        body {
+            background-color: #f5f7fa;
+            color: #222;
+        }
 
-    .property-card img {
-      width: 39%;
-      object-fit: cover;
-    }
+        /* Header */
 
-    .property-info {
-      padding: 25px 28px;
-    }
+        header {
+            background-color: #0b1f3a;
+            color: white;
+            padding: 20px 60px;
 
-    .location {
-      margin-bottom: 12px;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: #4b5563;
-      text-transform: uppercase;
-    }
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .property-info h2 {
-      margin-bottom: 10px;
-      font-size: 1.8rem;
-    }
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
 
-    .features {
-      font-size: 1.25rem;
-      color: #1f2937;
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
 
-    .price {
-      margin: 26px 0;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #2563eb;
-    }
+        /* Main Container */
 
-    .verified {
-      color: #374151;
-      font-size: 1.15rem;
-    }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
 
-    .verified span {
-      display: inline-block;
-      margin-right: 8px;
-      color: #16a34a;
-      font-size: 1.45rem;
-      vertical-align: middle;
-    }
+        h1 {
+            margin-bottom: 25px;
+        }
 
-    @media (max-width: 650px) {
-      .property-card {
-        flex-direction: column;
-      }
+        /* Search Box */
 
-      .property-card img {
-        width: 100%;
-        height: 220px;
-      }
+        .search-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
 
-      .property-info {
-        padding: 20px;
-      }
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
 
-      .property-info h2 {
-        font-size: 1.5rem;
-      }
+        .search-box input,
+        .search-box select {
+            padding: 12px;
+            margin-right: 10px;
 
-      .features,
-      .verified {
-        font-size: 1rem;
-      }
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-      .price {
-        margin: 18px 0;
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+        /* Property Grid */
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        /* Property Card */
+
+        .property-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .property-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .property-info {
+            padding: 20px;
+        }
+
+        .property-info h2 {
+            margin-bottom: 10px;
+        }
+
+        .location {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* Buttons */
+
+        .btn {
+            background-color: #0b1f3a;
+            color: white;
+
+            border: none;
+            padding: 11px 16px;
+
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 8px;
+        }
+
+        .btn:hover {
+            background-color: #163b6b;
+        }
+
+        /* Mobile Responsive */
+
+        @media (max-width: 800px) {
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 20px;
+            }
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-  <main class="property-list">
+    <!-- Header -->
 
-    <article class="property-card">
-      <img src="images/maple-house.jpg" alt="Maple House room">
+    <header>
 
-      <div class="property-info">
-        <p class="location">North Campus, Delhi</p>
-        <h2>Maple House</h2>
-        <p class="features">Private rooms · Wi-Fi · Meals</p>
-        <p class="price">₹14,500 / month</p>
-        <p class="verified"><span>●</span>Verified</p>
-      </div>
-    </article>
+        <div class="logo">
+            StayNest
+        </div>
 
-    <article class="property-card">
-      <img src="images/study-loft.jpg" alt="The Study Loft room">
+        <nav>
 
-      <div class="property-info">
-        <p class="location">Koramangala, Bengaluru</p>
-        <h2>The Study Loft</h2>
-        <p class="features">Shared rooms · Wi-Fi · Gym</p>
-        <p class="price">₹12,000 / month</p>
-        <p class="verified"><span>●</span>Verified</p>
-      </div>
-    </article>
+            <a href="index.html">
+                Home
+            </a>
 
-    <article class="property-card">
-      <img src="images/olive-residency.jpg" alt="Olive Residency room">
+            <a href="property-listing.html">
+                Find a Stay
+            </a>
 
-      <div class="property-info">
-        <p class="location">Viman Nagar, Pune</p>
-        <h2>Olive Residency</h2>
-        <p class="features">Private rooms · AC · Laundry</p>
-        <p class="price">₹16,000 / month</p>
-        <p class="verified"><span>●</span>Verified</p>
-      </div>
-    </article>
+            <a href="login.html">
+                Login
+            </a>
 
-  </main>
+            <a href="register.html">
+                Sign Up
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+
+    <div class="container">
+
+        <h1>
+            Find Your Perfect Student Stay
+        </h1>
+
+
+        <!-- Search Box -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="Search by location"
+            >
+
+            <select>
+
+                <option>
+                    Property Type
+                </option>
+
+                <option>
+                    Apartment
+                </option>
+
+                <option>
+                    Hostel
+                </option>
+
+                <option>
+                    PG
+                </option>
+
+            </select>
+
+            <button class="btn">
+                Search
+            </button>
+
+        </div>
+
+
+        <!-- Property Cards -->
+
+        <div class="property-grid">
+
+
+            <!-- Maple House -->
+
+            <div class="property-card">
+
+                <img
+                    src="images/maple-house.jpeg"
+                    alt="Maple House"
+                >
+
+                <div class="property-info">
+
+                    <h2>
+                        Maple House
+                    </h2>
+
+                    <p class="location">
+                        North Campus, Delhi
+                    </p>
+
+                    <p>
+                        Wi-Fi • Meals • Housekeeping
+                    </p>
+
+                    <p class="price">
+                        ₹14,500/month
+                    </p>
+
+                    <button class="btn">
+                        Interested
+                    </button>
+
+                    <button class="btn">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- The Study Loft -->
+
+            <div class="property-card">
+
+                <img
+                    src="images/study-loft.jpeg"
+                    alt="The Study Loft"
+                >
+
+                <div class="property-info">
+
+                    <h2>
+                        The Study Loft
+                    </h2>
+
+                    <p class="location">
+                        Koramangala, Bengaluru
+                    </p>
+
+                    <p>
+                        Wi-Fi • Gym • Shared Rooms
+                    </p>
+
+                    <p class="price">
+                        ₹12,000/month
+                    </p>
+
+                    <button class="btn">
+                        Interested
+                    </button>
+
+                    <button class="btn">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Olive Residency -->
+
+            <div class="property-card">
+
+                <img
+                    src="images/olive-residency.jpeg"
+                    alt="Olive Residency"
+                >
+
+                <div class="property-info">
+
+                    <h2>
+                        Olive Residency
+                    </h2>
+
+                    <p class="location">
+                        Viman Nagar, Pune
+                    </p>
+
+                    <p>
+                        Wi-Fi • Meals • Study Area
+                    </p>
+
+                    <p class="price">
+                        ₹16,000/month
+                    </p>
+
+                    <button class="btn">
+                        Interested
+                    </button>
+
+                    <button class="btn">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>
